@@ -6,7 +6,7 @@
 
 */
 
-class router
+class Router
 {
 	private $url;
 
@@ -20,6 +20,12 @@ class router
 	{
 		return $this->url;
 	}
+	public function view_parameter()
+	{
+		$data = explode("/", $this->url);
+
+		return $data[2];
+	}
 	public function full_data()
 	{
 		$data = explode("/", $this->url);
@@ -27,9 +33,9 @@ class router
 	}
 }
 
-class render
+class Render
 {
-	private $view;
+	public $view;
 	private $available_views;
 
 	function __construct($view)
@@ -38,6 +44,11 @@ class render
 		include("config/views_config.php");
 		$this->available_views = available_views;
 		$this->view = $view;
+
+		if($this->view == "")
+		{
+			$this->view = "inicio";
+		}
 	}
 
 	public function render_now()
@@ -84,6 +95,11 @@ class render
 		{
 			return 1;
 		}
+	}
+
+	public function return_view()
+	{
+		return $this->view;
 	}
 }
 ?>

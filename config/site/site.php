@@ -1,5 +1,6 @@
 <?php 
-
-define("lang", "EN");
+define("sitename", "Sifram");
+define("framework_url", "https://github.com/Vessely/sifram");
+define("lang", "ES");
 
  ?>
